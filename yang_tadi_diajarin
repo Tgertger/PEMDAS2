@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class yang_tadi_diajarin {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int[] listPilihanHarga = new int[50];
+        int[] listjumlahbarang = new int[50];
+        String[] totalbarang = new String[50];
+        System.out.println("*******************");
+        System.out.println("Toko Mart");
+        System.out.println("[NIM] [NAMA]");
+        System.out.println("*******************");
+        System.out.println("sabun harga : 1000");
+        System.out.println("sampo harga : 2000");
+        System.out.println("sapu harga : 1500");
+        System.out.println("gula harga : 2500");
+
+        boolean running = true;
+        int[] price = { 1000, 2000, 1500, 2500 };
+        int posisi = 0;
+        int totalprice = 0;
+        while (running) {
+            System.out.print("Masukkan nama barang ('selesai' untuk keluar): ");
+            String items = scan.nextLine();
+
+            if (items.equals("selesai")) {
+                break;
+            } else {
+                System.out.print("Masukkan jumlah: ");
+                int totalitems = scan.nextInt();
+                scan.nextLine();
+                if (items.equals("sabun")) {
+                    listjumlahbarang[posisi] = totalitems;
+                    listPilihanHarga[posisi] = totalitems * 1000;
+                    totalbarang[posisi] = items;
+                } else if (items.equals("sampo")) {
+                    listjumlahbarang[posisi] = totalitems;
+                    listPilihanHarga[posisi] = totalitems * 2000;
+                    totalbarang[posisi] = items;
+                } else if (items.equals("sapu")) {
+                    listjumlahbarang[posisi] = totalitems;
+                    listPilihanHarga[posisi] = totalitems * 1500;
+                    totalbarang[posisi] = items;
+                } else if (items.equals("gula")) {
+                    listjumlahbarang[posisi] = totalitems;
+                    listPilihanHarga[posisi] = totalitems * 2500;
+                    totalbarang[posisi] = items;
+                }
+                running = true;
+            }
+            ++posisi;
+
+        }
+        System.out.println("Daftar belanja");
+        System.out.println("---------------------------------------------");
+        System.out.printf("%-20s%20s\n", "Nama", "Total Harga");
+        for (int i = 0; i < 50; i++) {
+            if (listPilihanHarga[i] == 0) {
+                break;
+            }
+            totalprice += listPilihanHarga[i];
+            System.out.printf("%s %d %d \n", totalbarang[i], listjumlahbarang[i], listPilihanHarga[i]);
+        }
+
+    }
+}
